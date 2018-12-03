@@ -9,16 +9,16 @@ freq_sum <- sum(freq)
 
 nr_of_entries <- length(freq)
 
-freq_restult <- c(0)
+freq_result <- c(0)
 test <- FALSE
 i <- 1
 
 
 while (!test){
-  freq_restult[i+1] <- (freq_restult[i]+freq[((i-1)%%996)+1])
-  test <- is.element(freq_restult[i+1], freq_restult[1:i])
+  freq_result[i+1] <- (freq_result[i]+freq[((i-1)%%996)+1])
+  test <- is.element(freq_result[i+1], freq_result[1:i])
   print(i)
   i <- i+1
 }
 
-print(freq_result[i-1])
+print(freq_result[i])
