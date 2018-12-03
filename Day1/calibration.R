@@ -15,7 +15,7 @@ i <- 1
 
 
 while (!test){
-  freq_result[i+1] <- (freq_result[i]+freq[((i-1)%%996)+1])
+  freq_result[i+1] <- (freq_result[i]+freq[((i-1)%%nr_of_entries)+1])
   test <- is.element(freq_result[i+1], freq_result[1:i])
   print(i)
   i <- i+1
