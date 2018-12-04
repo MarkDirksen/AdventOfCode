@@ -39,8 +39,22 @@ for(row in 1:nrow(Grid)) {
 
 sum(Grid)
 
-#111708 too low
 
 image(Grid)
 
 #part2
+
+overlap_YN <- rep(1,dim(cloth_list)[1])
+
+for (i in 1:dim(cloth_list)[1]){
+  vec <- cloth_list[i,]
+  for(j in (vec[1]+1):(vec[1]+vec[3])){
+    for(k in (vec[2]+1):(vec[2]+vec[4])){
+      if(Grid[j,k]==1) {
+        overlap_YN[i] <- 0
+        break}
+    }
+  }
+}
+
+which(overlap_YN==1)
