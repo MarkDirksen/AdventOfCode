@@ -57,10 +57,11 @@ minute * sleepy_guard
 
 #part 2
 
+minutes <- matrix(rep(0,60*ncol(sleep_time)),nrow=ncol(sleep_time))
 
 for (i in 1:length(DateTime)){
   if(grepl("Guard .*? begins shift", Activity[i])==1){guard <- as.numeric(sub("#","",sub(" ","",regmatches(Activity[i],regexpr("#[0-9]* ", Activity[i])))))}
-  if(guard==sleepy_guard){
+
     
     if(Activity[i]=="wakes up") {
       end <- as.numeric(sub(":","",regmatches(DateTime[i],regexpr(":[0-9]*", DateTime[i]))))
@@ -68,6 +69,16 @@ for (i in 1:length(DateTime)){
       minutes[which(sleep_time[1,]==guard),start:(end-1)] <- minutes[which(sleep_time[1,]==guard),start:(end-1)]+1
       print(start:(end-1))
     }
-  }
+  
 }
+
+sleepy_minute <- which(minutes==max(minutes), arr.ind=T)[2]
+
+sleepy_guard_2 <- sleep_time[,which(minutes==max(minutes), arr.ind=T)[1]][1]
+
+
+print(sleepy_minute)
+print(sleepy_guard_2)
+print(sleepy_minute*sleepy_guard_2)
+
 
