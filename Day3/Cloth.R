@@ -1,4 +1,5 @@
-n <- 1100
+#import and clean data
+
 data_file_location <- "C:/code/AdventOfCode/Day3/data.txt"
 cloth_list <- read.table(data_file_location,header=FALSE,sep=" ",stringsAsFactors = FALSE)
 cloth_list <- cloth_list[,c(3,4)]
@@ -15,6 +16,8 @@ max_width <- max(apply(cloth_list,1,function(x) x[[1]]+x[[3]]))
 max_height <- max(apply(cloth_list,1,function(x) x[[2]]+x[[4]]))
 
 print(c(max_width,max_height))
+
+n <- 1100
 
 #part1
 
@@ -44,17 +47,17 @@ image(Grid)
 
 #part2
 
-overlap_YN <- rep(1,dim(cloth_list)[1])
+overlap_YN <- rep(0,dim(cloth_list)[1])
 
 for (i in 1:dim(cloth_list)[1]){
   vec <- cloth_list[i,]
   for(j in (vec[1]+1):(vec[1]+vec[3])){
     for(k in (vec[2]+1):(vec[2]+vec[4])){
       if(Grid[j,k]==1) {
-        overlap_YN[i] <- 0
+        overlap_YN[i] <- 1
         break}
     }
   }
 }
 
-which(overlap_YN==1)
+which(overlap_YN==0)
