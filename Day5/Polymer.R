@@ -4,7 +4,7 @@ data_file_location <- "C:/code/AdventOfCode/Day5/data.txt"
 
 polymer_input <- read_file(data_file_location)
 
-#polymer_input<-"dabAcCaCBAcCcaDA"
+#polymer_input<-"VvfFUuCcvVLlZzJjPpHSshgSsGjLoOlJrRuUQCchHiIRra"
 
 #part 1
 
@@ -17,10 +17,13 @@ while (TRUE){
   letter2 <- polymer[i+1]
   if(grepl("^[[:upper:]]+$", (letter1))) { test <- tolower(letter1)==letter2
   } else {test <- toupper(letter1)==letter2}
-  if (test==TRUE){polymer <- polymer[c(1:(i-1),min(c(i+2,length(polymer))):length(polymer))]
-  if(i!=1) i <- i-1
+  if (test==TRUE){
+    if(i==1) polymer <- polymer[(i+2):length(polymer)]
+    if(((i+1)!=length(polymer))&&(i!=1)) polymer <- polymer[c(1:(i-1),(i+2):length(polymer))]
+    if((i+1)==length(polymer)) polymer <- polymer[1:(i-1)]
+    if(i!=1) i <- i-1
   } else {i <- i+1}
-  print(i)
+  print(length(polymer))
   if (i==length(polymer)) break
 }
 
@@ -29,6 +32,4 @@ result <- paste(polymer,collapse="")
 print(result)
 
 nchar(result)
-
-#too low: 10586
 
