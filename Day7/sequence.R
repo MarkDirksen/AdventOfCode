@@ -21,3 +21,5 @@ while(length(steps)>0){
   to_vector <- to_vector[from_vector!=letter]
   from_vector <- from_vector[from_vector!=letter]
 }
+
+paste(sequence,collapse="") 
