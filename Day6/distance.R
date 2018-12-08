@@ -4,9 +4,9 @@ library("dplyr")
 
 data_file_location <- "C:/code/AdventOfCode/Day6/data.txt"
 
-#part 1
-
 coordinates <- read.table(data_file_location, sep = ",")
+
+#part 1
 
 range_x <- c(min(coordinates[1]),max(coordinates[1]))
 
@@ -58,3 +58,5 @@ for (i in range_x[1]:range_x[2]){
     dist_sum <- c(dist_sum,sum(d))
   }
 }
+
+sum(dist_sum < 10000)
